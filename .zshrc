@@ -14,9 +14,9 @@ ZSH_THEME="agnoster"
 OSTYPE=$(uname -s)
 if [[ "$OSTYPE" == "Darwin"* ]]; then
     DEFAULT_USER="andcj"
-    source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-    source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    # source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+    #
+    # source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
     alias ls="eza --icons=always"
 fi
@@ -88,7 +88,14 @@ function precmd () {
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git aws zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(
+  git 
+  aws 
+  zsh-autosuggestions 
+  zsh-syntax-highlighting
+  zsh_autocomplete
+  zsh_fast_syntax_highlighting
+)
 
 source $ZSH/oh-my-zsh.sh
 
