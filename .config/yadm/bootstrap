@@ -2,11 +2,15 @@
 
 system_type=$(uname -s)
 
-echo  "Installing oh-my-zsh"
+echo "Installing oh-my-zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 echo "Installing Pyenv"
 curl https://pyenv.run | bash
+
+echo "Installing Zsh"
+sudo apt install zsh
+sudo chsh -s $(which zsh)
 
 # if [ "$system_type" = "Darwin" ]; then
 #
@@ -19,4 +23,3 @@ curl https://pyenv.run | bash
 #   fi
 #
 # fi
-
