@@ -93,8 +93,8 @@ plugins=(
   aws 
   zsh-autosuggestions 
   zsh-syntax-highlighting
-  zsh_autocomplete
-  zsh_fast_syntax_highlighting
+  zsh-autocomplete
+  fast-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
