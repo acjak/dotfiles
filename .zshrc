@@ -126,8 +126,11 @@ alias csa='ssh -o StrictHostKeyChecking=no clairadm@nebula-preprod.local'
 alias csu='ssh -o StrictHostKeyChecking=no clairuser@nebula-preprod.local'
 
 if [[ "$OSTYPE" != "Darwin"* ]]; then
-    xset s off
-    xset -dpms
+    # Check if xserver is running
+    if [ "$DISPLAY" ]; then
+      xset s off
+      xset -dpms
+    fi
 fi
 
 export NVM_DIR="$HOME/.nvm"
