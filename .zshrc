@@ -10,6 +10,20 @@ export ZSH="$HOME/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="agnoster"
 
+# if macOS, then set user to andcj
+OSTYPE=$(uname -s)
+if [[ "$OSTYPE" == "Darwin"* ]]; then
+    DEFAULT_USER="andcj"
+    source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+    source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+    alias ls="eza --icons=always"
+fi
+# if linux, then set user to andcj
+#
+#
+
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -38,7 +52,11 @@ ZSH_THEME="agnoster"
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
+function precmd () {
+    window_title="\033]0;$(hostname)\007"
+        echo -ne "$window_title"
+    }
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
@@ -107,8 +125,10 @@ alias ssh='env TERM=xterm-256color ssh'
 alias csa='ssh -o StrictHostKeyChecking=no clairadm@nebula-preprod.local'
 alias csu='ssh -o StrictHostKeyChecking=no clairuser@nebula-preprod.local'
 
-xset s off
-xset -dpms
+if [[ "$OSTYPE" != "Darwin"* ]]; then
+    xset s off
+    xset -dpms
+fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
