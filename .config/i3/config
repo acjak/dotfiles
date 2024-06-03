@@ -194,7 +194,8 @@ client.focused    #2f343a #431431 #431431 #431431 #779927
 # client.focused    #2f343a #431431 #431431 #431431 #a3be8c
 
 # keybinding to lock screen
-bindsym Control+Mod1+l exec "i3lock -c 303030"
+# bindsym Control+Mod1+l exec "i3lock -c 303030"
+bindsym Control+$mod+l exec i3lock-fancy -gp & sleep 10 && xset s activate
 
 
 # resize window (you can also use the mouse for that)
