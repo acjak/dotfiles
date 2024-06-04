@@ -94,7 +94,7 @@ plugins=(
   zsh-autosuggestions 
   zsh-syntax-highlighting
   fast-syntax-highlighting
-  zsh-autocomplete
+  # zsh-autocomplete
 )
 
 source $ZSH/oh-my-zsh.sh
