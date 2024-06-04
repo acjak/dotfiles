@@ -19,6 +19,45 @@ return {
   --     },
   --   },
   -- }
+  -- {
+  --   "catppuccin/nvim",
+  --   name = "catppuccin",
+  --   priority = 1000,
+  --   		opts = {
+  -- 	term_colors = true,
+  -- 	transparent_background = false,
+  -- 	styles = {
+  -- 		comments = {},
+  -- 		conditionals = {},
+  -- 		loops = {},
+  -- 		functions = {},
+  -- 		keywords = {},
+  -- 		strings = {},
+  -- 		variables = {},
+  -- 		numbers = {},
+  -- 		booleans = {},
+  -- 		properties = {},
+  -- 		types = {},
+  -- 	},
+  -- 	color_overrides = {
+  -- 		mocha = {
+  -- 			-- base = "#000000",
+  -- 			-- mantle = "#000000",
+  -- 			-- crust = "#000000",
+  -- 		},
+  -- 	},
+  -- 	integrations = {
+  -- 		telescope = {
+  -- 			enabled = true,
+  -- 			style = "nvchad",
+  -- 		},
+  -- 		dropbar = {
+  -- 			enabled = true,
+  -- 			color_mode = true,
+  -- 		},
+  -- 	},
+  -- },
+  -- },
   {
     "neovim/nvim-lspconfig",
     ---@class PluginLspOpts
@@ -83,7 +122,9 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
+      -- colorscheme = "catppuccin-mocha",
       colorscheme = "night-owl",
+      -- colorscheme = "tokyonight"
     },
   },
   -- change color of the cursorline
@@ -152,4 +193,24 @@ return {
       })
     end,
   },
+  {
+  "nvim-treesitter/nvim-treesitter-context",
+  event = "LazyFile",
+  opts = { mode = "cursor", max_lines = 3 },
+  keys = {
+    {
+      "<leader>ut",
+      function()
+        local tsc = require("treesitter-context")
+        tsc.toggle()
+        if LazyVim.inject.get_upvalue(tsc.toggle, "enabled") then
+          LazyVim.info("Enabled Treesitter Context", { title = "Option" })
+        else
+          LazyVim.warn("Disabled Treesitter Context", { title = "Option" })
+        end
+      end,
+      desc = "Toggle Treesitter Context",
+    },
+  },
+}
 }
