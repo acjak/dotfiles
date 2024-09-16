@@ -26,6 +26,8 @@ exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xset s off
 exec --no-startup-id xset -dpms 
 
+exec --no-startup-id xsetroot -solid "#2f343a"
+
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
@@ -51,7 +53,8 @@ floating_modifier $mod
 
 # start a terminal
 # bindsym $mod+Return exec kitty
-bindsym $mod+Return exec alacritty
+# bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec wezterm
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -195,7 +198,7 @@ client.focused    #2f343a #431431 #431431 #431431 #779927
 
 # keybinding to lock screen
 # bindsym Control+Mod1+l exec "i3lock -c 303030"
-bindsym Control+$mod+l exec i3lock-fancy -gp & sleep 10 && xset s activate
+bindsym Control+$mod+l exec i3lock-fancy -gp & sleep 10 && xset dpms force off
 
 
 # resize window (you can also use the mouse for that)
