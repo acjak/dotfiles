@@ -22,8 +22,13 @@ config.font_size = 13.0
 config.hide_tab_bar_if_only_one_tab = true
 
 -- start full screen
-config.initial_rows = 50
+config.initial_rows = 54
+config.initial_cols = 171
 
+-- Remove window top bar
+config.window_decorations = "NONE"
+
+config.native_macos_fullscreen_mode = false
 -- local theme = wezterm.plugin.require("https://github.com/neapsix/wezterm").main
 -- config.colors = theme.colors()
 -- window_frame = theme.window_frame()
