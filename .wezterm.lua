@@ -28,6 +28,8 @@ config.initial_cols = 171
 -- Remove window top bar
 config.window_decorations = "NONE"
 
+config.audible_bell = "Disabled"
+
 config.native_macos_fullscreen_mode = false
 -- local theme = wezterm.plugin.require("https://github.com/neapsix/wezterm").main
 -- config.colors = theme.colors()
