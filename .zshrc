@@ -19,6 +19,10 @@ if [[ "$OSTYPE" == "Darwin"* ]]; then
     # source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
     alias ls="eza --icons=always"
+else 
+    DEFAULT_USER="anders"
+    # alias ls="ls --color=auto"
+    alias ls="eza --icons=always"
 fi
 # if linux, then set user to andcj
 #
