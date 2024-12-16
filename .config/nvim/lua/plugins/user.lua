@@ -14,11 +14,18 @@ return {
   --   enabled = true,
   --   opts = {
   --     -- disable pyright
-  --     lsp = {
-  --       python = { enabled = false },
+  --     ensure_installed = {
+  --       "mypy",
+  --       "ruff"
   --     },
-  --   },
-  -- }
+  --     lsp = {
+  --       python = { 
+  --         enabled = true,
+  --
+  --       },
+  --     }
+  --   }
+  -- },
   -- {
   --   "catppuccin/nvim",
   --   name = "catppuccin",
@@ -59,29 +66,50 @@ return {
   -- },
   -- },
   --
-  {
-  "olimorris/codecompanion.nvim",
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-    "nvim-treesitter/nvim-treesitter",
-    "hrsh7th/nvim-cmp", -- Optional: For using slash commands and variables in the chat buffer
-    "nvim-telescope/telescope.nvim", -- Optional: For using slash commands
-    { "stevearc/dressing.nvim", opts = {} }, -- Optional: Improves `vim.ui.select`
-  },
-  config = true
-},
-  {
-    "neovim/nvim-lspconfig",
-    ---@class PluginLspOpts
-    opts = {
-      ---@type lspconfig.options
-      
-      servers = {
-        -- pyright will be automatically installed with mason and loaded with lspconfig
-        pyright = { enabled = false },
-      },
+  -- folke/zen-mode.nvim
+  -- -- Lua
+    {
+      "folke/zen-mode.nvim",
+      opts = {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
     },
-  },
+   {
+   "olimorris/codecompanion.nvim",
+   dependencies = {
+     "nvim-lua/plenary.nvim",
+     "nvim-treesitter/nvim-treesitter",
+     "hrsh7th/nvim-cmp", -- Optional: For using slash commands and variables in the chat buffer
+     "nvim-telescope/telescope.nvim", -- Optional: For using slash commands
+     { "stevearc/dressing.nvim", opts = {} }, -- Optional: Improves `vim.ui.select`
+   },
+   config = true
+ },
+  -- {
+  --   "neovim/nvim-lspconfig",
+  --   ---@class PluginLspOpts
+  --   opts = {
+  --     ---@type lspconfig.options
+  --
+  --     servers = {
+  --       -- pyright will be automatically installed with mason and loaded with lspconfig
+  --       pyright = {
+  --         enabled = true,
+  --         settings = {
+  --           python = {
+  --             analysis = {
+  --               autoSearchPaths = true,
+  --               useLibraryCodeForTypes = true,
+  --               diagnosticMode = "workspace",
+  --             },
+  --           },
+  --         },
+  --       },
+  --     },
+  --   },
+  -- },
   {
     "folke/tokyonight.nvim",
     lazy = true,
@@ -113,19 +141,19 @@ return {
       { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
     },
   },
-  {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    branch = "canary",
-    dependencies = {
-      { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
-      { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
-    },
-    opts = {
-      debug = true, -- Enable debugging
-      -- See Configuration section for rest
-    },
-    -- See Commands section for default commands if you want to lazy load on them
-  },
+  -- {
+  --   "CopilotC-Nvim/CopilotChat.nvim",
+  --   branch = "canary",
+  --   dependencies = {
+  --     { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
+  --     { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
+  --   },
+  --   opts = {
+  --     debug = true, -- Enable debugging
+  --     -- See Configuration section for rest
+  --   },
+  --   -- See Commands section for default commands if you want to lazy load on them
+  -- },
   {
     "oxfist/night-owl.nvim",
   },
@@ -140,48 +168,48 @@ return {
   },
   -- change color of the cursorline
 
-  {
-    "hrsh7th/nvim-cmp",
-    dependencies = {
-      "hrsh7th/cmp-emoji",
-    },
-    ---@param opts cmp.ConfigSchema
-    opts = function(_, opts)
-      local has_words_before = function()
-        unpack = unpack or table.unpack
-        local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-        return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-      end
-
-      local luasnip = require("luasnip")
-      local cmp = require("cmp")
-
-      opts.mapping = vim.tbl_extend("force", opts.mapping, {
-        ["<Tab>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_next_item()
-            -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
-            -- this way you will only jump inside the snippet region
-          elseif luasnip.expand_or_jumpable() then
-            luasnip.expand_or_jump()
-          elseif has_words_before() then
-            cmp.complete()
-          else
-            fallback()
-          end
-        end, { "i", "s" }),
-        ["<S-Tab>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_prev_item()
-          elseif luasnip.jumpable(-1) then
-            luasnip.jump(-1)
-          else
-            fallback()
-          end
-        end, { "i", "s" }),
-      })
-    end,
-  },
+  -- {
+  --   "hrsh7th/nvim-cmp",
+  --   dependencies = {
+  --     "hrsh7th/cmp-emoji",
+  --   },
+  --   ---@param opts cmp.ConfigSchema
+  --   opts = function(_, opts)
+  --     local has_words_before = function()
+  --       unpack = unpack or table.unpack
+  --       local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  --       return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+  --     end
+  --
+  --     local luasnip = require("luasnip")
+  --     local cmp = require("cmp")
+  --
+  --     opts.mapping = vim.tbl_extend("force", opts.mapping, {
+  --       ["<Tab>"] = cmp.mapping(function(fallback)
+  --         if cmp.visible() then
+  --           cmp.select_next_item()
+  --           -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
+  --           -- this way you will only jump inside the snippet region
+  --         elseif luasnip.expand_or_jumpable() then
+  --           luasnip.expand_or_jump()
+  --         elseif has_words_before() then
+  --           cmp.complete()
+  --         else
+  --           fallback()
+  --         end
+  --       end, { "i", "s" }),
+  --       ["<S-Tab>"] = cmp.mapping(function(fallback)
+  --         if cmp.visible() then
+  --           cmp.select_prev_item()
+  --         elseif luasnip.jumpable(-1) then
+  --           luasnip.jump(-1)
+  --         else
+  --           fallback()
+  --         end
+  --       end, { "i", "s" }),
+  --     })
+  --   end,
+  -- },
   {
   "nvim-treesitter/nvim-treesitter-context",
   event = "LazyFile",
