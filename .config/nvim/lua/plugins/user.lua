@@ -211,6 +211,12 @@ return {
   --   end,
   -- },
   {
+    "folke/snacks.nvim",
+    opts = {
+  scroll = { enabled = false },
+}
+  },
+  {
   "nvim-treesitter/nvim-treesitter-context",
   event = "LazyFile",
   opts = { mode = "cursor", max_lines = 3 },
