@@ -1,5 +1,7 @@
 font-family = "Monospace Xenon"
 theme = catppuccin-mocha
-font-size = 16
+font-size = 14
 cursor-style = block
 shell-integration-features = no-cursor
+gtk-titlebar = false
+
