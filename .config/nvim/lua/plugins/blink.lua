@@ -72,12 +72,11 @@ return {
     },
 
     keymap = {
-      preset = "default",
-      ["<Tab>"] = { "select_next", "fallback" },
-      ["<S-Tab>"] = { "select_prev", "fallback" },
-      ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
-      ["<C-e>"] = { "hide" },
-      ["<CR>"] = { "select_and_accept" },
+      preset = "enter",
+      -- ["<S-Tab>"] = { "select_prev", "fallback" },
+      -- ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+      -- ["<C-e>"] = { "hide" },
+      -- ["<CR>"] = { "select_and_accept" },
     },
   },
   ---@param opts blink.cmp.Config | { sources: { compat: string[] } }
