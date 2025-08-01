@@ -155,3 +155,12 @@ source $HOME/.cargo/env
 VERSION=v19.7.0
 DISTRO=linux-x64
 export PATH=/usr/local/lib/nodejs/node-$VERSION-$DISTRO/bin:$PATH
+
+. "$HOME/.local/bin/env"
+
+# bun completions
+[ -s "/home/anders/.bun/_bun" ] && source "/home/anders/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
