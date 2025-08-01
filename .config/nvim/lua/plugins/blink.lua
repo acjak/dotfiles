@@ -61,6 +61,9 @@ return {
     -- signature = { enabled = true },
 
     sources = {
+      per_filetype = {
+        codecompanion = { "codecompanion" },
+      },
       -- adding any nvim-cmp sources here will enable them
       -- with blink.compat
       compat = {},
