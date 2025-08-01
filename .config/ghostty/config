@@ -4,4 +4,10 @@ font-size = 14
 cursor-style = block
 shell-integration-features = no-cursor
 gtk-titlebar = false
-
+macos-titlebar-style = hidden
+window-padding-x = 10
+window-padding-y = 10
+cursor-invert-fg-bg = true
+# background-opacity = 0.9
+#
+keybind = alt+enter=new_split:right
