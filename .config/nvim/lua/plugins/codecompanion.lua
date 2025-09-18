@@ -1,4 +1,4 @@
-local secrets = require("plugins.secrets")
+local secrets = require("secrets")
 
 return {
   {
@@ -14,6 +14,9 @@ return {
           adapter = "anthropic",
         },
         inline = {
+          adapter = "copilot",
+        },
+        agent = {
           adapter = "copilot",
         },
       },
