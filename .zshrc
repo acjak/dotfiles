@@ -138,7 +138,7 @@ alias csu='ssh -o StrictHostKeyChecking=no clairuser@nebula-preprod.local'
 
 if [[ "$OSTYPE" != "Darwin"* ]]; then
     # Check if xserver is running
-    if [ "$DISPLAY" ]; then
+    if [ "$DISPLAY" ] && [ "$XDG_SESSION_TYPE" != "wayland" ] ; then
       xset s off
       xset -dpms
     fi
